@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QuickTools - Text to Speech</title>
+</head>
+
+<body style="text-align:center; font-family:Arial; background:#f4f6f8;">
+
+<h1>🔊 Text to Speech</h1>
+
+<textarea id="text" rows="5" cols="30" placeholder="Type something..."></textarea>
+
+<br><br>
+
+<button onclick="speak()">Speak</button>
+
+<script>
+function speak(){
+  let text = document.getElementById("text").value;
+  let speech = new SpeechSynthesisUtterance(text);
+  speech.lang = "en-US";
+  window.speechSynthesis.speak(speech);
+}
+</script>
+
+</body>
+</html>
+<p>🔊 <a href="speech.html">Text to Speech</a></p>
