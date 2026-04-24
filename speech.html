@@ -1,28 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>QuickTools - Text to Speech</title>
+<title>QuickTools - Speech</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.box{
+  background:white;
+  padding:20px;
+  width:300px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+input,select{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+}
+
+button{
+  padding:10px;
+  width:100%;
+  background:#667eea;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+</style>
 </head>
 
-<body style="text-align:center; font-family:Arial; background:#f4f6f8;">
+<body>
 
-<h1>🔊 Text to Speech</h1>
+<div class="box">
+<h2>🔊 Text to Speech</h2>
 
-<textarea id="text" rows="5" cols="30" placeholder="Type something..."></textarea>
+<input id="text" placeholder="Text likho">
 
-<br><br>
+<select id="voice"></select>
 
 <button onclick="speak()">Speak</button>
+</div>
 
 <script>
+let voices = [];
+
+function loadVoices(){
+  voices = speechSynthesis.getVoices();
+  let select = document.getElementById("voice");
+  select.innerHTML = "";
+
+  voices.forEach((v,i)=>{
+    select.innerHTML += `<option value="${i}">${v.name} (${v.lang})</option>`;
+  });
+}
+
+speechSynthesis.onvoiceschanged = loadVoices;
+
 function speak(){
   let text = document.getElementById("text").value;
-  let speech = new SpeechSynthesisUtterance(text);
-  speech.lang = "en-US";
-  window.speechSynthesis.speak(speech);
+  let voiceIndex = document.getElementById("voice").value;
+
+  let msg = new SpeechSynthesisUtterance(text);
+  msg.voice = voices[voiceIndex];
+
+  speechSynthesis.cancel(); // old voice stop
+  speechSynthesis.speak(msg);
 }
 </script>
 
 </body>
 </html>
-<p>🔊 <a href="speech.html">Text to Speech</a></p>
