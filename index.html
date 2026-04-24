@@ -7,40 +7,53 @@
 body{
   margin:0;
   font-family:Arial;
-  background: linear-gradient(135deg,#667eea,#764ba2);
+  background:#0f172a;
   color:white;
-  text-align:center;
 }
 
-h1{
+.header{
+  text-align:center;
   padding:20px;
+  font-size:28px;
+  font-weight:bold;
 }
 
 .container{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
+  padding:20px;
 }
 
 .card{
-  background:white;
-  color:black;
+  background:#1e293b;
   margin:15px;
   padding:20px;
-  width:200px;
-  border-radius:10px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.2);
+  width:220px;
+  border-radius:12px;
+  text-align:center;
   transition:0.3s;
 }
 
 .card:hover{
-  transform:scale(1.05);
+  transform:translateY(-5px);
+  background:#334155;
 }
 
 a{
   text-decoration:none;
-  color:black;
-  font-weight:bold;
+  color:white;
+}
+
+button{
+  margin-top:10px;
+  padding:10px;
+  width:100%;
+  background:#22c55e;
+  border:none;
+  border-radius:8px;
+  color:white;
+  cursor:pointer;
 }
 </style>
 
@@ -48,28 +61,26 @@ a{
 
 <body>
 
-<h1>🚀 QuickTools</h1>
+<div class="header">🚀 QuickTools</div>
 
 <div class="container">
 
 <div class="card">
-<a href="index.html">🔗 QR Generator</a>
+<h3>🔐 Password Generator</h3>
+<p>Create strong passwords instantly</p>
+<a href="password.html"><button>Open</button></a>
 </div>
 
 <div class="card">
-<a href="password.html">🔐 Password</a>
+<h3>🔊 Text to Speech</h3>
+<p>Convert text into voice</p>
+<a href="speech.html"><button>Open</button></a>
 </div>
 
 <div class="card">
-<a href="speech.html">🔊 Speech</a>
-</div>
-
-<div class="card">
-<a href="image.html">🖼️ Image</a>
-</div>
-
-<div class="card">
-<a href="age.html">🎂 Age</a>
+<h3>🖼️ Image Generator</h3>
+<p>Generate images from text</p>
+<a href="image.html"><button>Open</button></a>
 </div>
 
 </div>
