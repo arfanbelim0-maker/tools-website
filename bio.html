@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QuickTools - Bio Generator</title>
+
+<style>
+body{
+  font-family:Arial;
+  margin:0;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  color:white;
+  text-align:center;
+}
+
+.box{
+  margin-top:80px;
+}
+
+h1{
+  font-size:35px;
+}
+
+select, button{
+  padding:12px;
+  margin:10px;
+  border:none;
+  border-radius:8px;
+}
+
+button{
+  background:#22c55e;
+  color:white;
+  cursor:pointer;
+}
+
+#result{
+  margin-top:20px;
+  background:white;
+  color:black;
+  padding:15px;
+  border-radius:10px;
+  display:inline-block;
+  max-width:300px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🔥 Insta Bio Generator</h1>
+
+<select id="type">
+  <option value="attitude">Attitude</option>
+  <option value="cool">Cool</option>
+  <option value="sad">Sad</option>
+  <option value="vip">VIP</option>
+</select>
+
+<br>
+
+<button onclick="generate()">Generate Bio</button>
+
+<div id="result">Your bio will appear here</div>
+
+<br><br>
+
+<button onclick="copy()">Copy Bio</button>
+
+</div>
+
+<script>
+
+function generate(){
+  let type = document.getElementById("type").value;
+
+  let bios = {
+    attitude:[
+      "🔥 Born to rule 😎",
+      "💯 No attitude, just personality",
+      "👑 King of my own world"
+    ],
+    cool:[
+      "🌊 Chill vibes only",
+      "😎 Living my best life",
+      "✨ Simple but cool"
+    ],
+    sad:[
+      "💔 Broken inside",
+      "😔 Silent pain",
+      "🥀 Lost in thoughts"
+    ],
+    vip:[
+      "💎 VIP Lifestyle",
+      "👑 Royal entry only",
+      "🔥 Limited edition"
+    ]
+  };
+
+  let random = bios[type][Math.floor(Math.random()*bios[type].length)];
+  document.getElementById("result").innerText = random;
+}
+
+function copy(){
+  let text = document.getElementById("result").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+
+</script>
+
+</body>
+</html>
