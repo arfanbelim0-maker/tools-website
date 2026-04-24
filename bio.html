@@ -1,148 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>QuickTools - Bio Generator</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:linear-gradient(135deg,#0f172a,#1e293b);
-  color:white;
-}
-
-.header{
-  text-align:center;
-  padding:20px;
-  font-size:26px;
-  font-weight:bold;
-}
-
-.tabs{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.tabs button{
-  margin:5px;
-  padding:10px 15px;
-  border:none;
-  border-radius:20px;
-  background:#334155;
-  color:white;
-  cursor:pointer;
-}
-
-.tabs button.active{
-  background:#22c55e;
-}
-
-.container{
-  max-width:400px;
-  margin:20px auto;
-}
-
-.card{
-  background:#1e293b;
-  padding:15px;
-  margin:10px 0;
-  border-radius:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.copy{
-  background:#22c55e;
-  border:none;
-  padding:8px 10px;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-.load{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  background:#2563eb;
-  border:none;
-  border-radius:8px;
-  color:white;
-  cursor:pointer;
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">🔥 Insta Bio Generator PRO</div>
-
-<div class="tabs">
-<button onclick="show('attitude',this)" class="active">Attitude</button>
-<button onclick="show('cool',this)">Cool</button>
-<button onclick="show('vip',this)">VIP</button>
-<button onclick="show('love',this)">Love</button>
-</div>
-
-<div class="container" id="list"></div>
-
-<button class="load" onclick="generate()">Load More</button>
-
-<script>
-let current="attitude";
-
 let data={
 attitude:[
 "👑 Born to rule 🔥","😎 No limits only vibes","💯 Attitude overloaded",
 "⚡ Fearless soul","🔥 Legend in making","😈 Rule breaker mode",
-"👑 King energy","🚀 Built different"
+"👑 King energy","🚀 Built different","😎 Silent killer",
+"💣 Danger zone","🔥 Savage mind","⚡ No fear only fire"
 ],
 cool:[
 "🌊 Chill vibes only","😎 Living free","✨ Stay cool",
-"🎧 Music & peace","🌴 No stress life","😌 Simple vibes"
+"🎧 Music & peace","🌴 No stress life","😌 Simple vibes",
+"☀️ Positive energy","🌙 Night thinker","💫 Just vibes",
+"🎵 Lost in music","😇 Peaceful mind"
 ],
 vip:[
 "💎 VIP Life","👑 Royal entry","🔥 Limited edition",
-"🚀 Top class","💯 Elite mindset"
+"🚀 Top class","💯 Elite mindset","🏆 Born premium",
+"👑 King status","💎 Rare personality"
 ],
 love:[
 "❤️ Love life","💕 Heart full","😍 Feeling special",
-"💖 Made for love","💘 Forever yours"
+"💖 Made for love","💘 Forever yours","🥰 True feelings",
+"❤️‍🔥 Deep love","💞 Only you"
+]
+};let data={
+attitude:[
+"👑 Born to rule 🔥","😎 No limits only vibes","💯 Attitude overloaded",
+"⚡ Fearless soul","🔥 Legend in making","😈 Rule breaker mode",
+"👑 King energy","🚀 Built different","😎 Silent killer",
+"💣 Danger zone","🔥 Savage mind","⚡ No fear only fire"
+],
+cool:[
+"🌊 Chill vibes only","😎 Living free","✨ Stay cool",
+"🎧 Music & peace","🌴 No stress life","😌 Simple vibes",
+"☀️ Positive energy","🌙 Night thinker","💫 Just vibes",
+"🎵 Lost in music","😇 Peaceful mind"
+],
+vip:[
+"💎 VIP Life","👑 Royal entry","🔥 Limited edition",
+"🚀 Top class","💯 Elite mindset","🏆 Born premium",
+"👑 King status","💎 Rare personality"
+],
+love:[
+"❤️ Love life","💕 Heart full","😍 Feeling special",
+"💖 Made for love","💘 Forever yours","🥰 True feelings",
+"❤️‍🔥 Deep love","💞 Only you"
 ]
 };
-
-function show(type,btn){
-current=type;
-document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-document.getElementById("list").innerHTML="";
-generate();
-}
-
-function generate(){
-let list=document.getElementById("list");
-let arr=data[current];
-
-for(let i=0;i<3;i++){
-let text=arr[Math.floor(Math.random()*arr.length)];
-
-list.innerHTML+=`
-<div class="card">
-<span>${text}</span>
-<button class="copy" onclick="copy('${text}')">Copy</button>
-</div>`;
-}
-}
-
-function copy(text){
-navigator.clipboard.writeText(text);
-alert("Copied!");
-}
-
-generate();
-</script>
-
-</body>
-</html>
