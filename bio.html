@@ -2,113 +2,146 @@
 <html>
 <head>
 <title>QuickTools - Bio Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
-  font-family:Arial;
   margin:0;
-  background:linear-gradient(135deg,#667eea,#764ba2);
+  font-family:Arial;
+  background:linear-gradient(135deg,#0f172a,#1e293b);
   color:white;
+}
+
+.header{
   text-align:center;
+  padding:20px;
+  font-size:26px;
+  font-weight:bold;
 }
 
-.box{
-  margin-top:80px;
+.tabs{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 
-h1{
-  font-size:35px;
-}
-
-select, button{
-  padding:12px;
-  margin:10px;
+.tabs button{
+  margin:5px;
+  padding:10px 15px;
   border:none;
-  border-radius:8px;
-}
-
-button{
-  background:#22c55e;
+  border-radius:20px;
+  background:#334155;
   color:white;
   cursor:pointer;
 }
 
-#result{
-  margin-top:20px;
-  background:white;
-  color:black;
+.tabs button.active{
+  background:#22c55e;
+}
+
+.container{
+  max-width:400px;
+  margin:20px auto;
+}
+
+.card{
+  background:#1e293b;
   padding:15px;
+  margin:10px 0;
   border-radius:10px;
-  display:inline-block;
-  max-width:300px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.copy{
+  background:#22c55e;
+  border:none;
+  padding:8px 10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.load{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:#2563eb;
+  border:none;
+  border-radius:8px;
+  color:white;
+  cursor:pointer;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="box">
+<div class="header">🔥 Insta Bio Generator PRO</div>
 
-<h1>🔥 Insta Bio Generator</h1>
-
-<select id="type">
-  <option value="attitude">Attitude</option>
-  <option value="cool">Cool</option>
-  <option value="sad">Sad</option>
-  <option value="vip">VIP</option>
-</select>
-
-<br>
-
-<button onclick="generate()">Generate Bio</button>
-
-<div id="result">Your bio will appear here</div>
-
-<br><br>
-
-<button onclick="copy()">Copy Bio</button>
-
+<div class="tabs">
+<button onclick="show('attitude',this)" class="active">Attitude</button>
+<button onclick="show('cool',this)">Cool</button>
+<button onclick="show('vip',this)">VIP</button>
+<button onclick="show('love',this)">Love</button>
 </div>
 
+<div class="container" id="list"></div>
+
+<button class="load" onclick="generate()">Load More</button>
+
 <script>
+let current="attitude";
+
+let data={
+attitude:[
+"👑 Born to rule 🔥","😎 No limits only vibes","💯 Attitude overloaded",
+"⚡ Fearless soul","🔥 Legend in making","😈 Rule breaker mode",
+"👑 King energy","🚀 Built different"
+],
+cool:[
+"🌊 Chill vibes only","😎 Living free","✨ Stay cool",
+"🎧 Music & peace","🌴 No stress life","😌 Simple vibes"
+],
+vip:[
+"💎 VIP Life","👑 Royal entry","🔥 Limited edition",
+"🚀 Top class","💯 Elite mindset"
+],
+love:[
+"❤️ Love life","💕 Heart full","😍 Feeling special",
+"💖 Made for love","💘 Forever yours"
+]
+};
+
+function show(type,btn){
+current=type;
+document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+document.getElementById("list").innerHTML="";
+generate();
+}
 
 function generate(){
-  let type = document.getElementById("type").value;
+let list=document.getElementById("list");
+let arr=data[current];
 
-  let bios = {
-    attitude:[
-      "🔥 Born to rule 😎",
-      "💯 No attitude, just personality",
-      "👑 King of my own world"
-    ],
-    cool:[
-      "🌊 Chill vibes only",
-      "😎 Living my best life",
-      "✨ Simple but cool"
-    ],
-    sad:[
-      "💔 Broken inside",
-      "😔 Silent pain",
-      "🥀 Lost in thoughts"
-    ],
-    vip:[
-      "💎 VIP Lifestyle",
-      "👑 Royal entry only",
-      "🔥 Limited edition"
-    ]
-  };
+for(let i=0;i<3;i++){
+let text=arr[Math.floor(Math.random()*arr.length)];
 
-  let random = bios[type][Math.floor(Math.random()*bios[type].length)];
-  document.getElementById("result").innerText = random;
+list.innerHTML+=`
+<div class="card">
+<span>${text}</span>
+<button class="copy" onclick="copy('${text}')">Copy</button>
+</div>`;
+}
 }
 
-function copy(){
-  let text = document.getElementById("result").innerText;
-  navigator.clipboard.writeText(text);
-  alert("Copied!");
+function copy(text){
+navigator.clipboard.writeText(text);
+alert("Copied!");
 }
 
+generate();
 </script>
 
 </body>
