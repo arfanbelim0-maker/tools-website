@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QuickTools - Word Repeater</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  color:white;
+  text-align:center;
+}
+
+.box{
+  margin-top:80px;
+}
+
+input,button{
+  padding:12px;
+  margin:10px;
+  border:none;
+  border-radius:8px;
+}
+
+button{
+  background:#22c55e;
+  color:white;
+  cursor:pointer;
+}
+
+#result{
+  margin-top:20px;
+  background:white;
+  color:black;
+  padding:15px;
+  border-radius:10px;
+  max-width:300px;
+  margin-left:auto;
+  margin-right:auto;
+  white-space:pre-line;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🔁 Word Repeater</h1>
+
+<input id="word" placeholder="Name likho"><br>
+<input id="count" type="number" placeholder="Number likho"><br>
+
+<button onclick="generate()">Start</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+function generate(){
+  let word=document.getElementById("word").value;
+  let count=document.getElementById("count").value;
+
+  let output="";
+
+  for(let i=0;i<count;i++){
+    output += word + "\n";
+  }
+
+  document.getElementById("result").innerText=output;
+}
+</script>
+
+</body>
+</html>
+<button onclick="copyText()">📋 Copy</button>
+function copyText(){
+  let text=document.getElementById("result").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+if(count > 10000){
+  alert("Max 10000 allowed");
+  return;
+}
+if(word=="" || count==""){
+  alert("Fill both fields");
+  return;
+}
