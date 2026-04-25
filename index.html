@@ -2,144 +2,78 @@
 <html>
 <head>
 <title>QuickTools</title>
-  <meta name="google-site-verification" content="J6hv-xAYexBEbhKxoZonxAXhMbYmWJiP2BLE8kerPxU" />
 
 <style>
 body{
-  margin:0;
-  font-family:Arial;
-  background:#f8fafc;
+margin:0;
+font-family:Arial;
+background: linear-gradient(135deg,#667eea,#764ba2);
+color:white;
+text-align:center;
 }
 
-/* HEADER */
-.header{
-  display:flex;
-  justify-content:space-between;
-  padding:15px 40px;
-  background:white;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+h1{
+padding:20px;
 }
 
-.logo{
-  font-size:22px;
-  font-weight:bold;
-  color:#2563eb;
-}
-
-/* HERO SECTION */
-.hero{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:60px;
-}
-
-.hero-text{
-  max-width:500px;
-}
-
-.hero-text h1{
-  font-size:40px;
-  color:#0f172a;
-}
-
-.hero-text p{
-  color:#555;
-  margin:20px 0;
-}
-
-.btn{
-  padding:12px 20px;
-  background:#2563eb;
-  color:white;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.hero img{
-  width:350px;
-}
-
-/* TOOLS */
 .container{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  padding:30px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 .card{
-  background:white;
-  width:220px;
-  margin:15px;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
-  text-align:center;
+background:white;
+color:black;
+margin:15px;
+padding:20px;
+border-radius:12px;
+width:200px;
+transition:0.3s;
 }
 
-.card button{
-  margin-top:10px;
-  padding:10px;
-  width:100%;
-  background:#22c55e;
-  border:none;
-  border-radius:8px;
-  color:white;
+.card:hover{
+transform:scale(1.1);
+}
+
+a{
+text-decoration:none;
+color:black;
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-<div class="logo">🚀 QuickTools</div>
-</div>
+<h1>🚀 QuickTools</h1>
 
-<!-- HERO -->
-<div class="hero">
-
-<div class="hero-text">
-<h1>All Tools in One Place</h1>
-<p>Create password, speech, images and more tools instantly.</p>
-
-<button class="btn" onclick="document.getElementById('tools').scrollIntoView()">
-Get Started
-</button>
-</div>
-
-<img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
-
-</div>
-
-<!-- TOOLS -->
-<div id="tools" class="container">
+<div class="container">
 
 <div class="card">
-<h3>Password Tool</h3>
-<a href="password.html"><button>Open</button></a>
+<a href="password.html">
+<h3>🔐 Password Generator</h3>
+</a>
 </div>
 
 <div class="card">
-<h3>Speech Tool</h3>
-<a href="speech.html"><button>Open</button></a>
+<a href="insta.html">
+<h3>📥 Insta Downloader</h3>
+</a>
 </div>
 
 <div class="card">
-<h3>Image Tool</h3>
-<a href="image.html"><button>Open</button></a>
+<a href="repeater.html">
+<h3>🔁 Text Repeater</h3>
+</a>
+</div>
+
+<div class="card">
+<a href="bio.html">
+<h3>✨ Stylish Bio</h3>
+</a>
 </div>
 
 </div>
 
 </body>
 </html>
-<div class="card">
-<h3>Bio Generator</h3>
-<a href="bio.html"><button>Open</button></a>
-</div>
-<head>
-
