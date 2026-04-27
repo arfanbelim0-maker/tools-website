@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Virus Alert</title>
+<style>
+body{
+  background:red;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  padding-top:100px;
+}
+button{
+  padding:12px;
+  margin-top:20px;
+  border:none;
+  border-radius:8px;
+  background:black;
+  color:white;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>⚠️ Your Phone is Infected!</h1>
+<p>Deleting files in <span id="count">5</span> seconds...</p>
+
+<button onclick="start()">Fix Now</button>
+
+<script>
+function start(){
+let c=5;
+let x=setInterval(()=>{
+  c--;
+  document.getElementById("count").innerText=c;
+
+  if(c<=0){
+    clearInterval(x);
+    document.body.innerHTML="<h1>😂 It's a prank!</h1>";
+  }
+},1000);
+}
+</script>
+
+</body>
+</html>
