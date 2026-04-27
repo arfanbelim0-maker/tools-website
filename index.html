@@ -2,76 +2,138 @@
 <html>
 <head>
 <title>QuickTools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
-margin:0;
-font-family:Arial;
-background: linear-gradient(135deg,#667eea,#764ba2);
-color:white;
-text-align:center;
+  margin:0;
+  font-family:Arial;
+  background: linear-gradient(270deg,#667eea,#764ba2,#ff6a00);
+  background-size:600% 600%;
+  animation: bg 10s ease infinite;
+  color:white;
 }
 
-h1{
-padding:20px;
+/* Background animation */
+@keyframes bg{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
+/* Header */
+.header{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+
+/* Hero */
+.hero{
+  text-align:center;
+  margin-top:80px;
+}
+
+.hero h1{
+  font-size:40px;
+}
+
+.hero p{
+  opacity:0.8;
+}
+
+.btn{
+  margin-top:20px;
+  padding:12px 20px;
+  background:#22c55e;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  color:white;
+}
+
+/* Tools */
 .container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:50px;
 }
 
 .card{
-background:white;
-color:black;
-margin:15px;
-padding:20px;
-border-radius:12px;
-width:200px;
-transition:0.3s;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  margin:15px;
+  padding:20px;
+  width:220px;
+  border-radius:15px;
+  text-align:center;
+  transition:0.3s;
 }
 
 .card:hover{
-transform:scale(1.1);
+  transform:translateY(-10px) scale(1.05);
 }
 
-a{
-text-decoration:none;
-color:black;
+.card a{
+  text-decoration:none;
+  color:white;
+}
+
+.card button{
+  margin-top:10px;
+  padding:10px;
+  width:100%;
+  background:#22c55e;
+  border:none;
+  border-radius:8px;
+  color:white;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<h1>🚀 QuickTools</h1>
+<div class="header">
+<div class="logo">🚀 QuickTools</div>
+</div>
 
-<div class="container">
+<div class="hero">
+<h1>All Tools in One Place</h1>
+<p>Simple • Fast • Free</p>
+<button class="btn" onclick="scrollToTools()">Get Started</button>
+</div>
+
+<div class="container" id="tools">
 
 <div class="card">
-<a href="password.html">
 <h3>🔐 Password Generator</h3>
-</a>
+<a href="password.html"><button>Open</button></a>
 </div>
 
 <div class="card">
-</a>
-</div>
-
-<div class="card">
-<a href="repeater.html">
 <h3>🔁 Text Repeater</h3>
-</a>
+<a href="repeat.html"><button>Open</button></a>
 </div>
 
 <div class="card">
-<a href="bio.html">
-<h3>✨ Stylish Bio</h3>
-</a>
+<h3>✨ Bio Generator</h3>
+<a href="bio.html"><button>Open</button></a>
 </div>
 
 </div>
+
+<script>
+function scrollToTools(){
+  document.getElementById("tools").scrollIntoView({behavior:"smooth"});
+}
+</script>
 
 </body>
 </html>
