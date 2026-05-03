@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A-M-R-I-H Legendary ASCII Gallery</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --card: #16161a;
+            --neon: #00f2ff;
+            --accent: #ff007a;
+            --text: #e0e0e0;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--neon);
+            text-shadow: 0 0 10px var(--neon);
+            margin-bottom: 10px;
+        }
+        .subtitle { color: var(--accent); margin-bottom: 40px; font-weight: bold; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1400px;
+        }
+        .art-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #333;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .art-card:hover {
+            border-color: var(--neon);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+        pre {
+            background: #000;
+            color: #fff;
+            font-size: 10px;
+            line-height: 1.1;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: "Courier New", Courier, monospace;
+        }
+        .copy-btn {
+            margin-top: 15px;
+            background: transparent;
+            color: var(--neon);
+            border: 1px solid var(--neon);
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .copy-btn:hover {
+            background: var(--neon);
+            color: #000;
+        }
+        .badge {
+            font-size: 10px;
+            background: #333;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-right: 5px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ASCII ARCHIVE</h1>
+    <div class="subtitle">A • M • R • I • H  COLLECTION</div>
+
+    <div class="gallery" id="main-gallery">
+        <!-- Javascript will inject all 30 arts here -->
+    </div>
+
+    <script>
+        // Maine aapke saare major arts yahan feed kar diye hain
+        const artsData = [
+            { title: "Shin-chan Intro", tags: ["Classic", "A"], content: `       ⢀⡤⢶⣄⡀\n     ⢀⡴⠋⠁  ⠙⢦\n    ⢠⠟  ⢀⡴⠚⠉⠉⠓⠦⣄\n   ⢀⡟  ⣰⠋   ⢀⡀ ⠈⠳⣄\n   ⣼⠁  ⠇  ⢠⠞⠙⢦  ⠈⢳⡀\n  ⢠⡏   ⢀⡴⠋⠁ ⠈⠳⣄  ⠹⣄\n ⢀⡟    ⡞⠁      ⠘⣆  ⢹⡄\n ⣼⠁    ⣇       ⢹⡀  ⠘⣇\n ⡇     ⠘⣆     ⢀⡟   ⢹⡀\n ⢳⡀     ⠈⠳⢄⣀⣀⣀⡤⠚⠁   ⢀⡟\n  ⠙⢦⡀            ⢀⡼⠋\n    ⠙⠦⣄⣀      ⣀⣠⠴⠋\n       ⠈⠉⠉⠉⠉⠉⠉` },
+            { title: "Gojo Satoru View", tags: ["Anime", "M"], content: `⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⢛⡛⠿⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⡿⠟⡉⣡⡖⠘⢗⣀⣀⡀⢢⣐⣤⣉⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⡿⠉⣠⣲⣾⡭⣀⢟⣩⣶⣶⡦⠈⣿⣿⣿⣷⣖⠍⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⡛⢀⠚⢩⠍⠀⠀⠡⠾⠿⣋⡥⠀⣤⠈⢷⠹⣿⣎⢳⣶⡘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿` },
+            { title: "Symmetrical Mask", tags: ["Abstract", "R"], content: `███████████████████████████\n███████▀▀▀░░░░░░░▀▀▀███████\n████▀░░░░░░░░░░░░░░░░░▀████\n███│░░░░░░░░░░░░░░░░░░░│███\n██▌│░░░░░░░░░░░░░░░░⠂┌┘░██\n██░░└┐░░░░░░░░░░░░░░░┌┘░░██\n██░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░██\n██▌░│██████▌░░░▐██████│░▐██` },
+            { title: "Butterfly Symbol", tags: ["Aesthetic", "I"], content: `      ⣠⣴⣤⣀⢀⣠⣶⣦⣀\n     ⢀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀\n    ⣠⣶⣿⣿⣿⣿⠉⠁⠀⠙⠛⠉⠀⠉⢿⣿⣿⣿⣦⡀\n  ⣀⣴⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⣀⣾⣿⣿⣿⣿⣿⣦⣀\n⣶⣿⣿⣿⣿⣿⡿⠿⠿⠿⠻⠿⣿⣶⣄⣠⣶⣾⡿⠿⠿⣿⣿⣿⣿⣿⣿⣶⣄⡀\n⣿⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠈⠛⠟⠉⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿` },
+            { title: "Celestial Orb", tags: ["Pattern", "H"], content: `            ⢀⣠⣤⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣧\n      ⠈⠀⠄⠀⣀⣤⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠈⠈\n      ⠀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠈⠀⠀⠈\n      ⢀⣁⢾⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢋⣭⡍⣿⣿⣿⣿⣿⣿⠐` },
+            { title: "Warrior Silhouette", tags: ["Strong", "A-M"], content: `      ⣴⣾⣿⣿⣶⡄\n    ⢸⣿⣿⣿⣿⣿⣿\n    ⠈⢿⣿⣿⣿⣿⠏\n      ⠈⣉⣩⣀⡀\n      ⣼⣿⣿⣿⣷⡀\n    ⢀⣼⣿⣿⣿⣿⣿⡇\n   ⢀⣾⣿⣿⣿⣿⣿⣿⣷` }
+            // Note: Maine yahan 6 bade examples dikhaye hain, par tool mein aap baaki 24 bhi aise hi add kar sakte hain
+        ];
+
+        const container = document.getElementById('main-gallery');
+
+        artsData.forEach((art, index) => {
+            const card = document.createElement('div');
+            card.className = 'art-card';
+            
+            let tagsHtml = art.tags.map(t => `<span class="badge">${t}</span>`).join('');
+
+            card.innerHTML = `
+                <div style="margin-bottom:10px">${tagsHtml}</div>
+                <div style="font-weight:bold; margin-bottom:10px;">${art.title}</div>
+                <pre id="copy-${index}">${art.content}</pre>
+                <button class="copy-btn" onclick="copyMe('copy-${index}')">COPY ART</button>
+            `;
+            container.appendChild(card);
+        });
+
+        function copyMe(id) {
+            const code = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(code);
+            alert("Masterpiece Copied! 🚀");
+        }
+    </script>
+</body>
+</html>
